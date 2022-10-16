@@ -10,5 +10,7 @@ package cn.knightzz.template.stack;
  * @create: 2022-10-16 20:40
  */
 public class MonotonousStackTemplate {
+    public static void main(String[] args) {
 
+    }
 }
