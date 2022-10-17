@@ -25,7 +25,7 @@ public class WalkingRobotSimulation_874 {
         }
 
         public long calcHash(int x, int y) {
-            return (x+30000) * 60000L + y + 30000;
+            return (x + 30000) * 60000L + y + 30000;
         }
 
         public int robotSim(int[] commands, int[][] obstacles) {
