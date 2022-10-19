@@ -278,6 +278,10 @@ s 中没有子串长度为 16 并且等于 words 的任何顺序排列的连接�
 
 
 
+#### 思路1 : 枚举所有子串
+
+
+
 ```java
 class Solution {
     public List<Integer> findSubstring(String s, String[] words) {
@@ -336,4 +340,8 @@ class Solution {
 // 包装类型判断时要用 equals
 // sunstring(start, end) ==> [start, end) ==> abc => ab : (0,2) , abc : (0,3)
 ```
+
+
+
+### 思路2 : 枚举所有子串 + 滑动窗口 
 
