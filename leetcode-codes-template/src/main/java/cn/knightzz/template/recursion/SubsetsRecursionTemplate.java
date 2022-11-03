@@ -45,7 +45,8 @@ public class SubsetsRecursionTemplate {
             // 执行下一层
             findSubsets(nums, index + 1);
 
-            // 还原当前层的状态 , 递归中局部变量是不需要改的
+            // 前面两个是选择/不选, 然后一直向下选择, 到底以后进行回溯
+            // 这一步是撤销当前的选择
             set.remove(set.size() - 1);
         }
 

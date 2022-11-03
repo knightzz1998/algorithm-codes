@@ -36,16 +36,16 @@ public class Subsets_78 {
                 return;
             }
 
-            // 处理当前层的逻辑
-            // 不选nums[index] 作为子集, 那就直接换下一个
-            findSubsets(nums, index + 1);
-
+            // 处理当前层的逻辑, 当前层选择 nums[index]
             // 选 nums[index] 作为子集
             set.add(nums[index]);
             // 执行下一层
             findSubsets(nums, index + 1);
 
-            // 还原当前层的状态 , 递归中局部变量是不需要改的
+            // 不选nums[index] 作为子集, 那就直接换下一个
+            findSubsets(nums, index + 1);
+
+            // 还原当前层的状态(这个目的是回溯时, 保证当前层的状态是不变的) , 递归中局部变量是不需要改的
             set.remove(set.size() - 1);
         }
 
