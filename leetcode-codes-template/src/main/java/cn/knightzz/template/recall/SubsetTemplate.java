@@ -12,7 +12,16 @@ import java.util.List;
  * @github <a href="https://github.com/knightzz1998">https://github.com/knightzz1998</a>
  * @create: 2022-11-03 21:41
  */
+@SuppressWarnings("all")
 public class SubsetTemplate {
+
+    public static void main(String[] args) {
+
+        Solution solution = new SubsetTemplate().new Solution();
+        int[] nums = {1, 2, 3};
+        List<List<Integer>> subsets = solution.subsets(nums);
+        subsets.forEach(System.out::println);
+    }
 
     class Solution {
 
@@ -33,7 +42,7 @@ public class SubsetTemplate {
                 track.addLast(nums[i]);
                 // 移动到下一层, 这里注意, start 会控制可以选择的路径
                 // 举个例子 : [1,2,3] , 当前 start = 0 , 移动到下一层的时候 int i = start = 1 , 并且 i = [1,2]
-                backtrack(nums, start + 1);
+                backtrack(nums, i + 1);
                 // 后序, 回到 nums[0] 的时候, 重新选择, 原本是 i = [0,1,2] , 0被选择过了, 所以要去选 1 和 2
                 // 要把刚才的选择的 nums[0] 移除掉
                 track.removeLast();
