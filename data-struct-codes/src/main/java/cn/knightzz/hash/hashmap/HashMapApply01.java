@@ -17,7 +17,6 @@ public class HashMapApply01 {
 
     public static void main(String[] args) {
         
-
     }
 
     class Solution {
