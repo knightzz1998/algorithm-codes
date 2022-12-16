@@ -12,6 +12,7 @@
         <module>data-struct-codes</module>
         <module>leetcode-codes-template</module>
         <module>leetcode-codes-solution</module>
+        <module>leetcode-stash</module>
     </modules>
 
     <properties>
