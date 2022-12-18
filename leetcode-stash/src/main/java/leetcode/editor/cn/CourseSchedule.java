@@ -70,8 +70,8 @@ public class CourseSchedule {
                 graph[i] = new LinkedList<>();
             }
             for (int[] edge : prerequisites) {
-                int from = edge[0];
-                int to = edge[1];
+                int from = edge[1];
+                int to = edge[0];
                 graph[from].add(to);
             }
             return graph;
