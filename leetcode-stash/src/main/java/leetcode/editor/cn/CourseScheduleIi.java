@@ -27,6 +27,10 @@ public class CourseScheduleIi {
             }
 
             // 逆序后
+            // 这里逆序的原因是因为构造图的时候,
+            // from  = edge[1] , to = edge[0]
+            // graph[from].add(to)
+            // 这样更符号直观情况, 但是实际上图的朝向被反过来了
             Collections.reverse(prepost);
             int[] res = new int[numCourses];
             for (int i = 0; i < numCourses; i++) {
