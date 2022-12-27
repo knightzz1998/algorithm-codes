@@ -136,7 +136,6 @@ public class MergeKSortedLists {
                 // 索引为p的节点的左孩子索引为 p * 2 + 1 , 右孩子索引为 p * 2 + 2
                 // 索引为p的节点的父亲节点索引是 (p - 1) / 2 (向下取整)
                 int father = (p - 1) / 2;
-                // 判断key
                 if(heap.get(p).key < heap.get(father).key) {
                     // 交换元素
                     Collections.swap(heap, p, father);
