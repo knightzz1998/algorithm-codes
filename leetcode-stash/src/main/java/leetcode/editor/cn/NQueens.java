@@ -48,8 +48,6 @@ public class NQueens {
                     return false;
                 }
             }
-
-
             // 判断左上方斜线是否有皇后冲突
             for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
                 if (board[i][j].equals("Q")) {
@@ -117,7 +115,6 @@ public class NQueens {
                 }
             }
         }
-
     }
     //leetcode submit region end(Prohibit modification and deletion)
 
