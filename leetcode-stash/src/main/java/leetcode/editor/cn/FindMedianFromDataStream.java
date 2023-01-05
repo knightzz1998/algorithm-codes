@@ -12,7 +12,7 @@ import java.util.PriorityQueue;
 public class FindMedianFromDataStream {
     public static void main(String[] args) {
         // 测试代码
-        Solution solution = new FindMedianFromDataStream().new Solution();
+        MedianFinder solution = new FindMedianFromDataStream().new MedianFinder();
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
