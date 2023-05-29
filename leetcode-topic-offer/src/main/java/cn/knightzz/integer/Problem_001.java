@@ -1,5 +1,7 @@
 package cn.knightzz.integer;
 
+import java.util.Scanner;
+
 /**
  * @author 王天赐
  * @title: Problem_001
@@ -15,57 +17,85 @@ public class Problem_001 {
     public static void main(String[] args) {
 
         Problem_001 problem001 = new Problem_001();
-
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        System.out.printf("result = %d", problem001.divide(a, b));
     }
 
     public int divide(int a, int b) {
 
-
-        // 处理 被除数为 0 的情况
+        // 处理特殊情况
         if (a == 0) {
             return 0;
         }
-
-        if (b > a) {
-            return 0;
+        // Overflow    Integer.MIN_VALUE <= a , b <= Integer.MAX_VALUE
+        if (a == Integer.MIN_VALUE) {
+            if (b == -1)
+                return Integer.MAX_VALUE;
+            if (b == 1)
+                return Integer.MIN_VALUE;
         }
 
-        // 处理越界情况
-        // -2^32 / 1
-        // -2^32 / -1
-        // 2^32 - 1 /  1
-        // 2^32 - 1 / -1
-        if (a == Integer.MIN_VALUE && b == -1) {
-            return Integer.MAX_VALUE;
+        if (b == Integer.MIN_VALUE) {
+            return a == Integer.MIN_VALUE ? 1 : 0;
+        }
+        if (b == -1) {
+            return -a;
         }
 
-        // 所有值全部取负 , 如果取正的情况下, -2^32 取正, 就越界了
-        int x = a > 0 ? -a : a;
-        int y = b > 0 ? -b : b;
+        // 符号
+        boolean positive = (a > 0 && b > 0) || (a < 0 && b < 0);
+
+        // 将所有的数字转换为负数 , 因为负数在家计算时不会出现溢出
+        a = a < 0 ? a : -a;
+        b = b < 0 ? b : -b;
 
         int result = 0;
-        int count = 1;
-
-        // 88 / 2 => 2, 4, 8,
-        while (true) {
-            if (x - y > 0) {
-                break;
-            } else {
-                result = result == 0 ? result : result + count;
+        while (a <= b) {
+            // 能进入循环 , 说明可以减, 那么 次数 + 1
+            int count = 1;
+            int div = b;
+            // 注意, 这是负数,
+            // 15 / 2 => -15 / -2 =>
+            // -15 < -2
+            // 逐步尝试最大能减多少
+            while (a - div <= div) {
+                // 如果能减, 那么 结果 翻倍
+                count = count << 1;
+                div = div << 1;
             }
-            // 0
-            // x - 2 : 1 , r = 0 + 1
-            // x - 4 : 2 , r = 1 + 2
-            // x - 6 : 3 , r = 3 + 3
-            x = x - y;
-            count++;
-            y = y + b;
+
+            // 减不了了 , 逐步减小 div的值
+            result += count;
+            // 把之前减的减去
+            a = a - div;
+            // next : 再次循环重新计算
         }
 
-        // 判断符号
-        boolean negative = (a < 0) != (b < 0);
+        // 整体流程 :
+        // 15 / 2 => -15 / -2
+        // => 一步一步的尝试
+        // -15 - (-2) = -13 <= -2 => count = 1
+        // -15 - (-4) = -11 <= -4 => count = 2 (最大可以减的)
+        // -15 - (-8) = -7  > -8 ==> xxx
+        // result += count = 2
+        // a = -15 - (-4) = -11
 
-        return negative ? -result : result;
+        // -11 < -2
+        // 第二次循环
+        // -11 - (-2) = -9 <= -2 => count = 1
+        // -11 - (-4) = -7 <= -4 => count = 2
+        // xxx
+        // result = 2 + coount = 4
+        // a = -11 - (-4) = -7
+        // ... 以此类推
+
+        // -7 - (-4) = -3 , count = 2 , result = 6
+        // -3 - (-2) = -1 , count = 1 , result = 7
+        // -1 > -2 => 跳出循环
+
+        return positive ? result : -result;
     }
 
 }
