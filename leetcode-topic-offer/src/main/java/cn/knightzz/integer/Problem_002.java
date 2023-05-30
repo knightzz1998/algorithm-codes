@@ -6,7 +6,7 @@ import java.util.Scanner;
  * @author 王天赐
  * @title: Problem_002
  * @projectName algorithm-codes
- * @description:
+ * @description: 剑指 Offer II 002. 二进制加法
  * @website <a href="https://knightzz.cn/">https://knightzz.cn/</a>
  * @github <a href="https://github.com/knightzz1998">https://github.com/knightzz1998</a>
  * @create: 2023-05-29 21:58
