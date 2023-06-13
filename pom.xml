@@ -17,6 +17,7 @@
         <module>zcy-algorithm-codes</module>
         <module>leetcode-topic-offer</module>
         <module>newcoder-top-110</module>
+        <module>programmer-carl-leetcode</module>
     </modules>
 
     <properties>
