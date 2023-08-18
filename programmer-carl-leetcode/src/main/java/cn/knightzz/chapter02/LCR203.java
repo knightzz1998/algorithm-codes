@@ -12,7 +12,7 @@ import cn.knightzz.other.ListNode;
  * @create: 2023-06-14 21:02
  */
 @SuppressWarnings("all")
-public class Solution_203 {
+public class LCR203 {
 
     class Solution {
         public ListNode removeElements(ListNode head, int val) {
