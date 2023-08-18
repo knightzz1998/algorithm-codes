@@ -38,7 +38,6 @@ public class Example {
             System.out.println(strs[0]);
             System.out.println(strs[1]);
         }
-        ArrayList
     }
 }
 
