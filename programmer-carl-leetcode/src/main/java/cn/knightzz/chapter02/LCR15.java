@@ -2,6 +2,7 @@ package cn.knightzz.chapter02;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -17,6 +18,9 @@ public class LCR15 {
     List<List<Integer>> result = new ArrayList<>();
 
     public List<List<Integer>> threeSum(int[] nums) {
+
+        LinkedList<Integer> cache = new LinkedList<>();
+
 
         Arrays.sort(nums);
 
