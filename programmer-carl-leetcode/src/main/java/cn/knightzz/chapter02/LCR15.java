@@ -41,6 +41,7 @@ public class LCR15 {
                 } else if (sum < 0) {
                     left++;
                 } else {
+                    // 问题的关键在于, 你要先去找到满足条件, 再去重, 而不是先去重复的
                     result.add(Arrays.asList(nums[i], nums[left], nums[right]));
                     while (right > left && nums[right] == nums[right - 1]) right--;
                     while (right > left && nums[left] == nums[left + 1]) left++;
