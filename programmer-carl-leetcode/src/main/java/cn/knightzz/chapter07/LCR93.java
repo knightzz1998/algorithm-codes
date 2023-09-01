@@ -23,22 +23,20 @@ public class LCR93 {
 
     public boolean judge(String s) {
 
-        // 处理 0 或者 00
-        // 先判断是否全部由0组成
-        if (s.startsWith("0") && Integer.parseInt(s) > 0) {
+        // 长度大于3的
+        if (s.length() > 3) {
             return false;
         }
 
-        // 如果去除0后的长度大于 3 , 说明不满足 0 ~ 255
-        // 条件, 都得用上, 1.0.10.023 是不行的
-        if (s.replace("0", "").length() > 3) {
+        if (s.equals("0")) {
+            return true;
+        }
+
+        // 以 0 开头 且长度大于1 的 , 00 , 023
+        if (s.startsWith("0") && s.length() > 1) {
             return false;
         }
 
-        // 如果以 0 开头的, 并且且 长度大于1 的 比如 023 , 就不行
-        if(s.startsWith("0") && s.length() > 1) {
-            return false;
-        }
         int v = Integer.parseInt(s);
         return v >= 0 && v <= 255;
     }
@@ -59,6 +57,10 @@ public class LCR93 {
 
         for (int j = startIndex; j < s.length(); j++) {
 
+            // 剪枝
+            if (track.size() > 4) {
+                return;
+            }
             // sub = [startIndex, j+1]
 
             String substr = s.substring(startIndex, j + 1);
