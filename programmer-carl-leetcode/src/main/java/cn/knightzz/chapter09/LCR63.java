@@ -23,15 +23,38 @@ public class LCR63 {
         boolean has = false;
         for (int i = m - 1; i >= 0; i--) {
             // 取决于前面位置是否有障碍物
+            if (obstacleGrid[i][n - 1] == 1) {
+                has = true;
+            }
             dp[i][n - 1] = has ? 0 : 1;
         }
         has = false;
         for (int j = n - 1; j >= 0; j--) {
             // 取决于前面位置是否有障碍物
+            if (obstacleGrid[m - 1][j] == 1) {
+                has = true;
+            }
             dp[m - 1][j] = has ? 0 : 1;
         }
 
+        for (int i = m - 2; i >= 0; i--) {
+            for (int j = n - 2; j >= 0; j--) {
+                if (obstacleGrid[i][j] == 1) {
+                    dp[i][j] = 0;
+                    continue;
+                }
 
+                int r1 = 0;
+                int r2 = 0;
+                if (i + 1 < m && j < n) {
+                    r1 = dp[i + 1][j];
+                }
+                if (i < m && j + 1 < n) {
+                    r2 = dp[i][j + 1];
+                }
+                dp[i][j] = r1 + r2;
+            }
+        }
         return dp[0][0];
     }
 
@@ -105,10 +128,11 @@ public class LCR63 {
 
         LCR63 lcr63 = new LCR63();
         // int[][] grid = {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}};
-        // int[][] grid = {{0, 1}, {0, 0}};
-        int[][] grid = {{1}};
-        //lcr63.process1(grid);
-        int res = lcr63.process2(grid);
+        int[][] grid = {{0, 1}, {0, 0}};
+        // int[][] grid = {{1}};
+        // lcr63.process1(grid);
+        // int res = lcr63.process2(grid);
+        int res = lcr63.uniquePathsWithObstacles(grid);
         System.out.println(res);
     }
 
